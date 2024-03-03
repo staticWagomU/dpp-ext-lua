@@ -43,13 +43,10 @@ export function parseLua(filelines: string[], marker: string): {
 
       if (hookName === "repo") {
         if (plugin) {
-          // if (ftPlugin) plugin.ftplugin = ftPlugin;
-
           plugins.push(plugin);
           plugin = null;
           luaHook = null;
           luaHookValue = null;
-          // ftPlugin = null;
         }
 
         if (!is.String(hookValue)) continue;
@@ -102,6 +99,7 @@ export function parseLua(filelines: string[], marker: string): {
     ) {
       const startMarkerPos = line.lastIndexOf(startMarker);
       luaHook = line.slice(luaComment.length, startMarkerPos).trim();
+      luaHookValue = null;
       continue;
     }
 
