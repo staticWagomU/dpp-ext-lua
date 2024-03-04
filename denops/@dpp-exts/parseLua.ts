@@ -65,6 +65,14 @@ export function parseLua(filelines: string[], marker: string): {
         continue;
       }
 
+      if (hookName === "lazy" || hookName === "if") {
+        if (!plugin) continue;
+        if (!is.Boolean(hookValue)) continue;
+
+        plugin[hookName] = hookValue;
+        continue;
+      }
+
       if (!plugin) continue;
 
       if (
