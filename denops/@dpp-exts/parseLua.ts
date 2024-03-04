@@ -57,7 +57,7 @@ export function parseLua(filelines: string[], marker: string): {
         };
         continue;
       }
-      if (hookName === "name" || hookName === "rtp") {
+      if (hookName === "name" || hookName === "rtp" || hookName === "depends") {
         if (!plugin) continue;
         if (!is.String(hookValue)) continue;
 
